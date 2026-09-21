@@ -565,6 +565,76 @@ depth = 0.01
 
 [sub_resource type="BoxMesh" id="BoxMesh_45ump"]
 
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_1w2up"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_bsgff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqrdp"]
+albedo_color = Color(0.11980235, 0.72912043, 0.5755808, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ynxhs"]
+
+[sub_resource type="Skin" id="Skin_bsgff"]
+
+[sub_resource type="Shader" id="Shader_w48qg"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.7.2.stable.mono's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vivmo"]
+render_priority = 0
+shader = SubResource("Shader_w48qg")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
 [node name="Main" type="Node3D" unique_id=500145794]
 script = ExtResource("1_ig7tw")
 
@@ -746,11 +816,122 @@ world_environment = NodePath("../WorldEnvironment")
 hide_in_passthrough = Array[NodePath]([NodePath("../Floor"), NodePath("../PassthroughTutorialText"), NodePath("../Props/secretnopassthroughball")])
 
 [node name="PassthroughTutorialText" type="Label3D" parent="." unique_id=8889272]
-transform = Transform3D(0.96385396, 0, -0.26643118, 0, 1, 0, 0.26643118, 0, 0.96385396, 1.6474805, 1.1432885, -2.0095248)
+transform = Transform3D(0.96385396, 0, -0.26643118, 0, 1, 0, 0.26643118, 0, 0.96385396, 1.6503973, 1.1432885, -2.0087185)
 text = "Press 'B' on your
 right controller
 to toggle passthrough!"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1565806849]
+[node name="Outer Wall 1" type="MeshInstance3D" parent="." unique_id=1565806849]
 transform = Transform3D(9.555058, 0, 0, 0, 0.5354227, 0, 0, 0, 0.28568947, -0.49136496, 0, 4.68067)
 mesh = SubResource("BoxMesh_45ump")
+
+[node name="Outer Wall 2" type="MeshInstance3D" parent="." unique_id=2010820832]
+transform = Transform3D(9.555058, 0, 0, 0, 0.5354227, 0, 0, 0, 0.28568947, -0.2680285, -0.0019946098, -4.761314)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Outer Wall 3" type="MeshInstance3D" parent="." unique_id=1646139682]
+transform = Transform3D(-0.22592506, 0, -0.2856096, 0, 0.5354226, 0, 9.552386, 0, -0.0067549995, -5.014383, 0, -0.06666708)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Outer Wall 4" type="MeshInstance3D" parent="." unique_id=1440301527]
+transform = Transform3D(-0.22592506, 0, -0.2856096, 0, 0.5354226, 0, 9.552386, 0, -0.0067549995, 4.253862, -0.0044412613, -0.06666708)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 1" type="MeshInstance3D" parent="." unique_id=602726059]
+transform = Transform3D(-3.4217544, 0, -0.061240315, 0, 0.5354225, 0, 1.0618027, 0, -0.19735228, -3.3631692, -0.0044412613, 3.2726965)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 2" type="MeshInstance3D" parent="." unique_id=1248978161]
+transform = Transform3D(-3.5824196, 0, -0.0026411414, 0, 0.5354225, 0, 0.04579228, 0, -0.20661879, 0.096841216, -0.0044412613, 2.7386527)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 3" type="MeshInstance3D" parent="." unique_id=338158752]
+transform = Transform3D(-2.0567997, 0, -0.0447539, 0, 0.5354225, 0, 0.61269134, 0, -0.15023848, 3.1969228, -0.0044412613, 3.1661282)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 4" type="MeshInstance3D" parent="." unique_id=1479648148]
+transform = Transform3D(-2.0567997, 0, -0.0447539, 0, 0.5354225, 0, 0.61269134, 0, -0.15023848, 3.1969228, -0.0044412613, 1.4956944)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 5" type="MeshInstance3D" parent="." unique_id=1125903026]
+transform = Transform3D(-6.7508802, 0, 0.033865005, 0, 0.53542256, 0, -1.9622382, 0, -0.11650905, -0.21660423, -0.0044412613, 1.1130309)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 6" type="MeshInstance3D" parent="." unique_id=962070384]
+transform = Transform3D(-0.2819518, 0, -0.19082937, 0, 0.53542256, 0, 0.59576476, 0, -0.09031197, 0.33443773, -0.0044412613, 1.5913675)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 7" type="MeshInstance3D" parent="." unique_id=1293614066]
+transform = Transform3D(-0.27167007, 0, -0.15758748, 0, 0.53542256, 0, 0.5740394, 0, -0.0745799, 0.63490653, -0.0044412613, 2.47203)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 8" type="MeshInstance3D" parent="." unique_id=1730152752]
+transform = Transform3D(-0.48989394, 0, -0.10545723, 0, 0.53542256, 0, 1.035147, 0, -0.04990872, -0.76494867, -0.0044412613, 2.2720416)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 9" type="MeshInstance3D" parent="." unique_id=1715046394]
+transform = Transform3D(-0.5582824, 0, -0.09335396, 0, 0.53542256, 0, 1.1796519, 0, -0.04418072, -1.1871562, -0.0044412613, 1.4487902)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 10" type="MeshInstance3D" parent="." unique_id=1552668284]
+transform = Transform3D(-0.8428879, 0, -0.063870125, 0, 0.53542256, 0, 1.7810237, 0, -0.030227194, -2.3605843, -0.0044412613, 2.1498396)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle Wall 11" type="MeshInstance3D" parent="." unique_id=1475552329]
+transform = Transform3D(-0.91871965, 0, -0.057518013, 0, 0.53542256, 0, 1.9412563, 0, -0.027220992, -3.035562, -0.0044412613, 1.3493652)
+mesh = SubResource("BoxMesh_45ump")
+
+[node name="Obstacle" type="MeshInstance3D" parent="." unique_id=174037939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0709705, 0, -1.2084036)
+mesh = SubResource("TubeTrailMesh_1w2up")
+
+[node name="Obstacle8" type="MeshInstance3D" parent="." unique_id=345897218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8206935, 0, 0.22344387)
+mesh = SubResource("TubeTrailMesh_1w2up")
+
+[node name="Obstacle2" type="MeshInstance3D" parent="." unique_id=1478835854]
+transform = Transform3D(1.4710311, 0, 0, 0, 1.4710311, 0, 0, 0, 1.4710311, -2.8158066, 0, -2.8675814)
+mesh = SubResource("TubeTrailMesh_1w2up")
+
+[node name="Obstacle7" type="MeshInstance3D" parent="." unique_id=1391171351]
+transform = Transform3D(1.4710311, 0, 0, 0, 1.4710311, 0, 0, 0, 1.4710311, 2.7800877, 0, -0.19124974)
+mesh = SubResource("TubeTrailMesh_1w2up")
+
+[node name="Obstacle3" type="MeshInstance3D" parent="." unique_id=1370420834]
+transform = Transform3D(0.5424303, 0, 0, 0, 0.5424303, 0, 0, 0, 0.5424303, 2.9346302, 0, -2.1815164)
+mesh = SubResource("TubeTrailMesh_1w2up")
+
+[node name="Obstacle6" type="MeshInstance3D" parent="." unique_id=1254827177]
+transform = Transform3D(0.5424303, 0, 0, 0, 0.5424303, 0, 0, 0, 0.5424303, -1.4698169, 0, -3.9769523)
+mesh = SubResource("TubeTrailMesh_1w2up")
+
+[node name="Obstacle5" type="MeshInstance3D" parent="." unique_id=223874019]
+transform = Transform3D(0.5424303, 0, 0, 0, 0.5424303, 0, 0, 0, 0.5424303, -1.9321212, 0, -0.83133006)
+mesh = SubResource("TubeTrailMesh_1w2up")
+
+[node name="Obstacle4" type="MeshInstance3D" parent="." unique_id=944439882]
+transform = Transform3D(2.1348786, 0, 0, 0, 2.1348786, 0, 0, 0, 2.1348786, 0.2914304, 0, -2.3944886)
+mesh = SubResource("TubeTrailMesh_1w2up")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=328605077]
+transform = Transform3D(0.67760205, 0, 0, 0, 0.67760205, 0, 0, 0, 0.67760205, 3.360215, 0, 3.8975344)
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1214850997]
+transform = Transform3D(0.46589243, 0, -0.5329936, 0, 1.1938825, 0, 1.0992268, 0, 0.22590213, 2.37631, 0, -3.8165226)
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1957086780]
+transform = Transform3D(-0.5387661, 0, -0.51659375, 0, 1.1938825, 0, 1.0654043, 0, -0.26123714, 2.1920557, 0, 0.92769724)
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1581022939]
+transform = Transform3D(-0.5387661, 0, -0.3482507, 0, 1.1938825, 0, 1.0654043, 0, -0.17610747, -4.2364674, 0, -3.8100157)
+mesh = SubResource("PrismMesh_bsgff")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1134965378]
+transform = Transform3D(0.18078862, 0, 0, 0, 0.18078862, 0, 0, 0, 0.18078862, -4.7239757, 0.10660101, 4.1465907)
+material_override = SubResource("StandardMaterial3D_oqrdp")
+mesh = SubResource("BoxMesh_ynxhs")
+skin = SubResource("Skin_bsgff")
+surface_material_override/0 = SubResource("ShaderMaterial_vivmo")
