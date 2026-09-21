@@ -563,6 +563,8 @@ uppercase = true
 pixel_size = 0.001
 depth = 0.01
 
+[sub_resource type="BoxMesh" id="BoxMesh_45ump"]
+
 [node name="Main" type="Node3D" unique_id=500145794]
 script = ExtResource("1_ig7tw")
 
@@ -634,6 +636,7 @@ environment = SubResource("Environment_lts4m")
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1222995564]
 
 [node name="Mesh" type="MeshInstance3D" parent="Floor" unique_id=1788946882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48269367, 0, 0)
 material_override = SubResource("ShaderMaterial_floor")
 mesh = SubResource("PlaneMesh_floor")
 
@@ -642,7 +645,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 shape = SubResource("BoxShape3D_floor")
 
 [node name="Table" type="StaticBody3D" parent="." unique_id=1222995565]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.572733, 0.75, -0.6)
 
 [node name="Mesh" type="MeshInstance3D" parent="Table" unique_id=1507181728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0029900074, 0)
@@ -670,6 +673,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007018119, 0.07232797, -0.3
 shape = SubResource("BoxShape3D_vivmo")
 
 [node name="Props" type="Node3D" parent="." unique_id=546788418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.444902, 0, 0)
 
 [node name="Box" type="RigidBody3D" parent="Props" unique_id=1568289628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28429145, 0.89793026, -0.59422106)
@@ -746,3 +750,7 @@ transform = Transform3D(0.96385396, 0, -0.26643118, 0, 1, 0, 0.26643118, 0, 0.96
 text = "Press 'B' on your
 right controller
 to toggle passthrough!"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1565806849]
+transform = Transform3D(9.555058, 0, 0, 0, 0.5354227, 0, 0, 0, 0.28568947, -0.49136496, 0, 4.68067)
+mesh = SubResource("BoxMesh_45ump")
