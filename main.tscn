@@ -881,7 +881,7 @@ mesh = SubResource("BoxMesh_45ump")
 transform = Transform3D(-0.91871965, 0, -0.057518013, 0, 0.53542256, 0, 1.9412563, 0, -0.027220992, -3.035562, -0.0044412613, 1.3493652)
 mesh = SubResource("BoxMesh_45ump")
 
-[node name="Obstacle" type="MeshInstance3D" parent="." unique_id=174037939]
+[node name="Obstacle1" type="MeshInstance3D" parent="." unique_id=174037939]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0709705, 0, -1.2084036)
 mesh = SubResource("TubeTrailMesh_1w2up")
 
@@ -913,23 +913,23 @@ mesh = SubResource("TubeTrailMesh_1w2up")
 transform = Transform3D(2.1348786, 0, 0, 0, 2.1348786, 0, 0, 0, 2.1348786, 0.2914304, 0, -2.3944886)
 mesh = SubResource("TubeTrailMesh_1w2up")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=328605077]
+[node name="Obstacle9" type="MeshInstance3D" parent="." unique_id=328605077]
 transform = Transform3D(0.67760205, 0, 0, 0, 0.67760205, 0, 0, 0, 0.67760205, 3.360215, 0, 3.8975344)
 mesh = SubResource("PrismMesh_bsgff")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1214850997]
+[node name="Obstacle10" type="MeshInstance3D" parent="." unique_id=1214850997]
 transform = Transform3D(0.46589243, 0, -0.5329936, 0, 1.1938825, 0, 1.0992268, 0, 0.22590213, 2.37631, 0, -3.8165226)
 mesh = SubResource("PrismMesh_bsgff")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1957086780]
+[node name="Obstacle11" type="MeshInstance3D" parent="." unique_id=1957086780]
 transform = Transform3D(-0.5387661, 0, -0.51659375, 0, 1.1938825, 0, 1.0654043, 0, -0.26123714, 2.1920557, 0, 0.92769724)
 mesh = SubResource("PrismMesh_bsgff")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1581022939]
+[node name="Obstacle12" type="MeshInstance3D" parent="." unique_id=1581022939]
 transform = Transform3D(-0.5387661, 0, -0.3482507, 0, 1.1938825, 0, 1.0654043, 0, -0.17610747, -4.2364674, 0, -3.8100157)
 mesh = SubResource("PrismMesh_bsgff")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1134965378]
+[node name="Obstacle13" type="MeshInstance3D" parent="." unique_id=1134965378]
 transform = Transform3D(0.18078862, 0, 0, 0, 0.18078862, 0, 0, 0, 0.18078862, -4.7239757, 0.10660101, 4.1465907)
 material_override = SubResource("StandardMaterial3D_oqrdp")
 mesh = SubResource("BoxMesh_ynxhs")
