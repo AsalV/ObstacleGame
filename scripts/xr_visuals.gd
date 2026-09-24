@@ -26,6 +26,7 @@ const EXPECTED_POSE := &"grip"
 
 
 func _ready() -> void:
+	XRServer.world_scale = 0.25
 	_attach(left_controller, left_model)
 	_attach(right_controller, right_model)
 
@@ -42,3 +43,4 @@ func _attach(controller_path: NodePath, model: PackedScene) -> void:
 	instance.position = model_offset
 	instance.rotation_degrees = model_rotation
 	controller.add_child(instance)
+	instance.scale = Vector3.ONE * XRServer.world_scale
