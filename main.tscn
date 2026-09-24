@@ -10,9 +10,6 @@
 [ext_resource type="Shader" uid="uid://bdncegx70k5ge" path="res://assets/shaders/floor_grid.gdshader" id="7_grid"]
 [ext_resource type="Script" uid="uid://u4v467pv0cty" path="res://scripts/xr_grab.gd" id="11_grab"]
 [ext_resource type="Script" uid="uid://cabtbicn2evsq" path="res://scripts/xr_move.gd" id="12_move"]
-[ext_resource type="Shader" uid="uid://b6ydk431jky8p" path="res://assets/shaders/per_eye_color.gdshader" id="12_ycdy4"]
-[ext_resource type="Shader" uid="uid://b3b2pbfumuxm4" path="res://assets/shaders/left_eye.gdshader" id="13_vivmo"]
-[ext_resource type="Shader" uid="uid://blrqyx0st2vu6" path="res://assets/shaders/right_eye.gdshader" id="14_2cqfq"]
 [ext_resource type="Script" uid="uid://bt5krry1meoum" path="res://scripts/xr_grab_hands.gd" id="15_hgrab"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b1s13"]
@@ -488,75 +485,6 @@ sky = SubResource("Sky_oqsj0")
 ambient_light_source = 3
 reflected_light_source = 2
 
-[sub_resource type="StandardMaterial3D" id="Mat_table"]
-albedo_color = Color(0.34, 0.29, 0.24, 1)
-roughness = 0.7
-
-[sub_resource type="BoxMesh" id="BoxMesh_table"]
-size = Vector3(1.2, 0.06, 0.7)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_table"]
-size = Vector3(1.2, 0.06, 0.7)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lts4m"]
-size = Vector3(0.1, 0.1, 0.75)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vivmo"]
-size = Vector3(1.2, 0.1, 0.1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_prop_grid"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lts4m"]
-albedo_color = Color(0.7750634, 0.7750634, 0.7750634, 1)
-metallic = 1.0
-roughness = 0.1
-
-[sub_resource type="BoxMesh" id="BoxMesh_prop"]
-material = SubResource("StandardMaterial3D_lts4m")
-size = Vector3(0.09, 0.09, 0.09)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_prop"]
-size = Vector3(0.09, 0.09, 0.09)
-
-[sub_resource type="SphereMesh" id="SphereMesh_prop"]
-radius = 0.05
-height = 0.1
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_prop"]
-radius = 0.05
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cegan"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_82xsv"]
-radius = 0.05
-height = 0.1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w48qg"]
-render_priority = 0
-shader = ExtResource("12_ycdy4")
-shader_parameter/left_eye_color = Color(1, 0, 0, 1)
-shader_parameter/right_eye_color = Color(0, 1, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yaehf"]
-render_priority = 0
-shader = ExtResource("13_vivmo")
-
-[sub_resource type="TextMesh" id="TextMesh_lts4m"]
-text = "left eye"
-uppercase = true
-pixel_size = 0.001
-depth = 0.01
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_074og"]
-render_priority = 0
-shader = ExtResource("14_2cqfq")
-
-[sub_resource type="TextMesh" id="TextMesh_cegan"]
-text = "right eye"
-uppercase = true
-pixel_size = 0.001
-depth = 0.01
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_floor"]
 render_priority = 0
 shader = ExtResource("7_grid")
@@ -767,6 +695,7 @@ shape = SubResource("SphereShape3D_grab")
 [node name="XRTogglePassthrough" type="Node" parent="CharacterBody3D/XROrigin3D/XRControllerRight" unique_id=1025080111 node_paths=PackedStringArray("passthrough_controller_node")]
 script = ExtResource("3_vivmo")
 passthrough_controller_node = NodePath("../../../../Passthrough")
+button_action_name = null
 metadata/_custom_type_script = "uid://jfdo7emflrdm"
 
 [node name="XRVisuals" type="Node3D" parent="CharacterBody3D/XROrigin3D" unique_id=1921252323]
@@ -803,92 +732,8 @@ turn_controller = NodePath("../XRControllerRight")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=868570715]
 environment = SubResource("Environment_lts4m")
 
-[node name="Table" type="StaticBody3D" parent="." unique_id=1222995565]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.572733, 0.75, -0.6)
-
-[node name="Mesh" type="MeshInstance3D" parent="Table" unique_id=1507181728]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0029900074, 0)
-material_override = SubResource("Mat_table")
-mesh = SubResource("BoxMesh_table")
-
-[node name="Collision" type="CollisionShape3D" parent="Table" unique_id=1762058184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0020278692, 0)
-shape = SubResource("BoxShape3D_table")
-
-[node name="RightWall" type="CollisionShape3D" parent="Table" unique_id=2111551738]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6405138, 0.07232797, 0)
-shape = SubResource("BoxShape3D_lts4m")
-
-[node name="LeftWall" type="CollisionShape3D" parent="Table" unique_id=27880957]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.63855135, 0.07232797, 0)
-shape = SubResource("BoxShape3D_lts4m")
-
-[node name="FrontWall" type="CollisionShape3D" parent="Table" unique_id=827357064]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007018119, 0.07232797, 0.38712388)
-shape = SubResource("BoxShape3D_vivmo")
-
-[node name="BackWall" type="CollisionShape3D" parent="Table" unique_id=583203132]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007018119, 0.07232797, -0.3838225)
-shape = SubResource("BoxShape3D_vivmo")
-
 [node name="Props" type="Node3D" parent="." unique_id=546788418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.444902, 0, 0)
-
-[node name="Box" type="RigidBody3D" parent="Props" unique_id=1568289628]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28429145, 0.89793026, -0.59422106)
-
-[node name="Mesh" type="MeshInstance3D" parent="Props/Box" unique_id=1991983902]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09934425)
-material_override = SubResource("ShaderMaterial_prop_grid")
-mesh = SubResource("BoxMesh_prop")
-
-[node name="Collision" type="CollisionShape3D" parent="Props/Box" unique_id=64314266]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09825504)
-shape = SubResource("BoxShape3D_prop")
-
-[node name="Ball" type="RigidBody3D" parent="Props" unique_id=362352031]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, -0.6)
-
-[node name="Mesh" type="MeshInstance3D" parent="Props/Ball" unique_id=1380581418]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.12304139)
-mesh = SubResource("SphereMesh_prop")
-
-[node name="Collision" type="CollisionShape3D" parent="Props/Ball" unique_id=1357242908]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.121456295)
-shape = SubResource("SphereShape3D_prop")
-
-[node name="secretnopassthroughball" type="RigidBody3D" parent="Props" unique_id=667379221]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17854202, 0.95, -0.5351477)
-
-[node name="Mesh" type="MeshInstance3D" parent="Props/secretnopassthroughball" unique_id=839355466]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004936129, 0, 0.12304139)
-material_override = SubResource("ShaderMaterial_cegan")
-mesh = SubResource("SphereMesh_82xsv")
-
-[node name="Collision" type="CollisionShape3D" parent="Props/secretnopassthroughball" unique_id=207799532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.121456295)
-shape = SubResource("SphereShape3D_prop")
-
-[node name="PerEyeBox" type="RigidBody3D" parent="Props" unique_id=1738426715]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31006065, 0.9039176, -0.71345115)
-
-[node name="Mesh" type="MeshInstance3D" parent="Props/PerEyeBox" unique_id=822659639]
-material_override = SubResource("ShaderMaterial_w48qg")
-mesh = SubResource("BoxMesh_prop")
-
-[node name="Collision" type="CollisionShape3D" parent="Props/PerEyeBox" unique_id=47353824]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0020998716)
-shape = SubResource("BoxShape3D_prop")
-
-[node name="lefteyetext" type="MeshInstance3D" parent="Props/PerEyeBox" unique_id=2076739899]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019794822, 0.04300797)
-material_override = SubResource("ShaderMaterial_yaehf")
-mesh = SubResource("TextMesh_lts4m")
-
-[node name="righteyetext" type="MeshInstance3D" parent="Props/PerEyeBox" unique_id=2135147407]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.014873862, 0.04375124)
-material_override = SubResource("ShaderMaterial_074og")
-mesh = SubResource("TextMesh_cegan")
 
 [node name="Floor" type="StaticBody3D" parent="Props" unique_id=1222995564]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.444902, 0, 0)
@@ -913,11 +758,10 @@ directional_shadow_max_distance = 12.0
 
 [node name="Passthrough" type="Node" parent="." unique_id=1290157622]
 script = ExtResource("6_pass")
-world_environment = NodePath("../WorldEnvironment")
-hide_in_passthrough = Array[NodePath]([NodePath("../Props/Floor"), NodePath("../PassthroughTutorialText"), NodePath("../Props/secretnopassthroughball")])
 
 [node name="PassthroughTutorialText" type="Label3D" parent="." unique_id=8889272]
 transform = Transform3D(0.96385396, 0, -0.26643118, 0, 1, 0, 0.26643118, 0, 0.96385396, 1.6503973, 1.1432885, -2.0087185)
+visible = false
 text = "Press 'B' on your
 right controller
 to toggle passthrough!"
