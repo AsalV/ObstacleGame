@@ -570,8 +570,6 @@ uppercase = true
 pixel_size = 0.001
 depth = 0.01
 
-[sub_resource type="BoxMesh" id="BoxMesh_45ump"]
-
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yaehf"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
@@ -656,6 +654,8 @@ data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gngh3"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="BoxMesh" id="BoxMesh_45ump"]
+
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_1w2up"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_bsgff"]
@@ -730,6 +730,7 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 script = ExtResource("1_ig7tw")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1805118261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
 [node name="XROrigin3D" type="XROrigin3D" parent="CharacterBody3D" unique_id=1033207768]
 
@@ -813,6 +814,7 @@ shape = SubResource("BoxShape3D_floor")
 
 [node name="Table" type="StaticBody3D" parent="." unique_id=1222995565]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.572733, 0.75, -0.6)
+visible = false
 
 [node name="Mesh" type="MeshInstance3D" parent="Table" unique_id=1507181728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0029900074, 0)
@@ -844,6 +846,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.444902, 0, 0)
 
 [node name="Box" type="RigidBody3D" parent="Props" unique_id=1568289628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28429145, 0.89793026, -0.59422106)
+visible = false
 
 [node name="Mesh" type="MeshInstance3D" parent="Props/Box" unique_id=1991983902]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09934425)
@@ -856,6 +859,7 @@ shape = SubResource("BoxShape3D_prop")
 
 [node name="Ball" type="RigidBody3D" parent="Props" unique_id=362352031]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, -0.6)
+visible = false
 
 [node name="Mesh" type="MeshInstance3D" parent="Props/Ball" unique_id=1380581418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.12304139)
@@ -867,6 +871,7 @@ shape = SubResource("SphereShape3D_prop")
 
 [node name="secretnopassthroughball" type="RigidBody3D" parent="Props" unique_id=667379221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17854202, 0.95, -0.5351477)
+visible = false
 
 [node name="Mesh" type="MeshInstance3D" parent="Props/secretnopassthroughball" unique_id=839355466]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004936129, 0, 0.12304139)
@@ -879,6 +884,7 @@ shape = SubResource("SphereShape3D_prop")
 
 [node name="PerEyeBox" type="RigidBody3D" parent="Props" unique_id=1738426715]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31006065, 0.9039176, -0.71345115)
+visible = false
 
 [node name="Mesh" type="MeshInstance3D" parent="Props/PerEyeBox" unique_id=822659639]
 material_override = SubResource("ShaderMaterial_w48qg")
@@ -914,13 +920,10 @@ hide_in_passthrough = Array[NodePath]([NodePath("../Floor"), NodePath("../Passth
 
 [node name="PassthroughTutorialText" type="Label3D" parent="." unique_id=8889272]
 transform = Transform3D(0.96385396, 0, -0.26643118, 0, 1, 0, 0.26643118, 0, 0.96385396, 1.6503973, 1.1432885, -2.0087185)
+visible = false
 text = "Press 'B' on your
 right controller
 to toggle passthrough!"
-
-[node name="Outer Wall 1" type="MeshInstance3D" parent="." unique_id=1565806849]
-transform = Transform3D(9.555058, 0, 0, 0, 0.5354227, 0, 0, 0, 0.28568947, -0.49136496, 0, 4.68067)
-mesh = SubResource("BoxMesh_45ump")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1248349080]
 stream = ExtResource("17_cegan")
@@ -1041,6 +1044,10 @@ shape = SubResource("ConcavePolygonShape3D_d2t1y")
 [node name="CollisionShape3D28" type="CollisionShape3D" parent="Obstaclels/StaticBody3D" unique_id=332008457]
 transform = Transform3D(0.18078862, 0, 0, 0, 0.18078862, 0, 0, 0, 0.18078862, -4.7239757, 0.10660101, 4.1465907)
 shape = SubResource("ConcavePolygonShape3D_gngh3")
+
+[node name="Outer Wall 1" type="MeshInstance3D" parent="Obstaclels/StaticBody3D" unique_id=1565806849]
+transform = Transform3D(9.555058, 0, 0, 0, 0.5354227, 0, 0, 0, 0.28568947, -0.49136496, 0, 4.68067)
+mesh = SubResource("BoxMesh_45ump")
 
 [node name="Outer Wall 2" type="MeshInstance3D" parent="Obstaclels/StaticBody3D" unique_id=2010820832]
 transform = Transform3D(9.555058, 0, 0, 0, 0.5354227, 0, 0, 0, 0.28568947, -0.2680285, -0.0019946098, -4.761314)
