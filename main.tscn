@@ -665,7 +665,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007419586, 0.06484239, 0)
 shape = SubResource("CapsuleShape3D_b1s13")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="CharacterBody3D" unique_id=1033207768]
-world_scale = 0.25
 
 [node name="XRCamera3D" type="XRCamera3D" parent="CharacterBody3D/XROrigin3D" unique_id=807774865]
 fov = 25.312496
