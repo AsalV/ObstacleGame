@@ -13,10 +13,7 @@
 [ext_resource type="Shader" uid="uid://b6ydk431jky8p" path="res://assets/shaders/per_eye_color.gdshader" id="12_ycdy4"]
 [ext_resource type="Shader" uid="uid://b3b2pbfumuxm4" path="res://assets/shaders/left_eye.gdshader" id="13_vivmo"]
 [ext_resource type="Shader" uid="uid://blrqyx0st2vu6" path="res://assets/shaders/right_eye.gdshader" id="14_2cqfq"]
-[ext_resource type="AudioStream" uid="uid://ddqpbhju7j15i" path="res://0920godotplay_st3_bpm104_m4.wav" id="15_2cqfq"]
 [ext_resource type="Script" uid="uid://bt5krry1meoum" path="res://scripts/xr_grab_hands.gd" id="15_hgrab"]
-[ext_resource type="AudioStream" uid="uid://dqpdh0ah61yot" path="res://0920godotplaySPARKLE_st2_bpm104_m2.wav" id="16_074og"]
-[ext_resource type="AudioStream" uid="uid://phueh8n3g6ui" path="res://0920godotgame1playing_104_long.wav" id="17_yaehf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_grab"]
 radius = 0.08
@@ -709,7 +706,7 @@ environment = SubResource("Environment_lts4m")
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1222995564]
 
 [node name="Mesh" type="MeshInstance3D" parent="Floor" unique_id=1788946882]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4800911, -0.0063581467, 0.0013682842)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48269367, 0, 0)
 material_override = SubResource("ShaderMaterial_floor")
 mesh = SubResource("PlaneMesh_floor")
 
@@ -916,23 +913,9 @@ mesh = SubResource("TubeTrailMesh_1w2up")
 transform = Transform3D(2.1348786, 0, 0, 0, 2.1348786, 0, 0, 0, 2.1348786, 0.2914304, 0, -2.3944886)
 mesh = SubResource("TubeTrailMesh_1w2up")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Obstacle4" unique_id=614091570]
-stream = ExtResource("15_2cqfq")
-unit_size = 75.66
-autoplay = true
-max_distance = 5.0
-panning_strength = 2.0
-
 [node name="Obstacle9" type="MeshInstance3D" parent="." unique_id=328605077]
 transform = Transform3D(0.67760205, 0, 0, 0, 0.67760205, 0, 0, 0, 0.67760205, 3.360215, 0, 3.8975344)
 mesh = SubResource("PrismMesh_bsgff")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Obstacle9" unique_id=1942863655]
-stream = ExtResource("16_074og")
-unit_size = 59.49
-autoplay = true
-max_distance = 2.0
-panning_strength = 2.0
 
 [node name="Obstacle10" type="MeshInstance3D" parent="." unique_id=1214850997]
 transform = Transform3D(0.46589243, 0, -0.5329936, 0, 1.1938825, 0, 1.0992268, 0, 0.22590213, 2.37631, 0, -3.8165226)
@@ -947,12 +930,8 @@ transform = Transform3D(-0.5387661, 0, -0.3482507, 0, 1.1938825, 0, 1.0654043, 0
 mesh = SubResource("PrismMesh_bsgff")
 
 [node name="Obstacle13" type="MeshInstance3D" parent="." unique_id=1134965378]
-transform = Transform3D(0.09791643, 0, 0, 0, 0.09791643, 0, 0, 0, 0.09791643, -4.7239757, 0.10660101, 4.1465907)
+transform = Transform3D(0.18078862, 0, 0, 0, 0.18078862, 0, 0, 0, 0.18078862, -4.7239757, 0.10660101, 4.1465907)
 material_override = SubResource("StandardMaterial3D_oqrdp")
 mesh = SubResource("BoxMesh_ynxhs")
 skin = SubResource("Skin_bsgff")
 surface_material_override/0 = SubResource("ShaderMaterial_vivmo")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1308983971]
-stream = ExtResource("17_yaehf")
-autoplay = true

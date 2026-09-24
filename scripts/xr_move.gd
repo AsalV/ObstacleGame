@@ -1,5 +1,6 @@
-## TEMPLATE FILE ############################
+#############################################
 # Joystick locomotion. Left stick to move, right stick to rotate
+# Now uses a CharacterBody3D so movement respects collision.
 #############################################
 
 extends Node3D
@@ -24,8 +25,10 @@ class_name XRMovement
 @export var move_speed := 2.0 ## m/s
 @export var snap_degrees := 30.0
 @export_range(0.0, 0.9) var deadzone := 0.2 ## for stick drift
+@export var gravity := 9.8
 
 var _origin: XROrigin3D = null
+var _body: CharacterBody3D = null
 var _camera: XRCamera3D = null
 var _move_controller: XRController3D = null
 var _turn_controller: XRController3D = null
@@ -38,19 +41,41 @@ func _ready() -> void:
 	_origin = get_parent() as XROrigin3D
 	if _origin == null:
 		push_error("XRMovement|FATAL: this node must be a child of an XROrigin3D")
-		set_process(false)
+		set_physics_process(false)
+		return
+
+	_body = _origin.get_parent() as CharacterBody3D
+	if _body == null:
+		push_error("XRMovement|FATAL: XROrigin3D's parent must be a CharacterBody3D")
+		set_physics_process(false)
 		return
 
 	_camera = get_node_or_null(camera) as XRCamera3D
 	_move_controller = get_node_or_null(move_controller) as XRController3D
 	_turn_controller = get_node_or_null(turn_controller) as XRController3D
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not enabled:
 		return
 
+	# 2. Apply gravity
+	_apply_gravity(delta)
+
+	# 3. Apply joystick-driven horizontal velocity
 	_slide(delta)
+
+	# 4. Handle snap turning
 	_snap_turn()
+
+	# 5. Actually move, respecting collisions
+	_body.move_and_slide()
+
+
+func _apply_gravity(delta: float) -> void:
+	if not _body.is_on_floor():
+		_body.velocity.y -= gravity * delta
+	else:
+		_body.velocity.y = 0.0
 
 
 func _slide(delta: float) -> void:
@@ -59,6 +84,8 @@ func _slide(delta: float) -> void:
 
 	var stick := _move_controller.get_vector2(stick_action)
 	if stick.length() < deadzone:
+		_body.velocity.x = 0.0
+		_body.velocity.z = 0.0
 		return
 
 	# Get head rotation and throw away the y component.
@@ -69,9 +96,10 @@ func _slide(delta: float) -> void:
 	right.y = 0.0
 
 	# Keep the direction a unit vector as well. Otherwise diagonal movement is faster, a bug
-	# youve probably seen in other games
+	# you've probably seen in other games
 	var direction := (right.normalized() * stick.x + forward.normalized() * stick.y).limit_length(1.0)
-	_origin.global_position += direction * move_speed * delta
+	_body.velocity.x = direction.x * move_speed
+	_body.velocity.z = direction.z * move_speed
 
 
 func _snap_turn() -> void:
@@ -95,7 +123,7 @@ func _snap_turn() -> void:
 	var pivot := _camera.global_position
 	pivot.y = _origin.global_position.y
 
-	# Perform the rotaion at the origin to avoid translation
+	# Perform the rotation at the origin to avoid translation
 	var t := _origin.global_transform
 	t = t.translated(-pivot)
 	t = Transform3D(Basis(Vector3.UP, angle), Vector3.ZERO) * t
