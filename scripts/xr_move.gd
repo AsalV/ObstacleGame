@@ -127,9 +127,6 @@ func _slide(delta: float) -> void:
 	_body.velocity.x = direction.x * move_speed
 	_body.velocity.z = direction.z * move_speed
 
-
-
-
 func _smooth_turn(delta: float) -> void:
 	if _turn_controller == null:
 		return

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="vratmit-godot-xr-template"
+config/name="obstaclegame-vratmit-godot-xr-template"
 run/main_scene="uid://dnnvbq1dubml1"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
