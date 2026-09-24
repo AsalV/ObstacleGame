@@ -912,6 +912,8 @@ mesh = SubResource("TubeTrailMesh_1w2up")
 transform = Transform3D(0.5424303, 0, 0, 0, 0.5424303, 0, 0, 0, 0.5424303, -1.9321212, 0, -0.83133006)
 mesh = SubResource("TubeTrailMesh_1w2up")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Obstacle5" unique_id=1987916001]
+
 [node name="Obstacle4" type="MeshInstance3D" parent="." unique_id=944439882]
 transform = Transform3D(2.1348786, 0, 0, 0, 2.1348786, 0, 0, 0, 2.1348786, 0.2914304, 0, -2.3944886)
 mesh = SubResource("TubeTrailMesh_1w2up")
